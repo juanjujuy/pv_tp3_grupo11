@@ -6,5 +6,3 @@ export const productos = [
     {descripcion: "Cable HDMI", precio: 9500},
     {descripcion: "WebCam", precio: 14000}
 ];
-
-export default productos;
