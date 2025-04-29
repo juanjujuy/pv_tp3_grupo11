@@ -8,8 +8,6 @@ const [nuevo,setNuevo] = useState ("");
 
 const guardarNombre = (event) => {
     setNuevo(event.target.value);
-    
-
 }
 
 const agregarTarea = (event) => {
@@ -18,7 +16,6 @@ const agregarTarea = (event) => {
     console.log(nuevo);
 
 }
-
 
     return(
         <div>
