@@ -1,4 +1,4 @@
-import { productos } from "../array";
+import { productos } from '../array.js'
 
 console.log("Ejercicio1");
 
