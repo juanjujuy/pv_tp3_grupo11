@@ -60,7 +60,7 @@ function Producto(){
 
   return (
     <div className="container">
-      <h2 clasName="titulo">Lista de Productos Inicial</h2>
+      <h2 className="titulo">Lista de Productos Inicial</h2>
       <ul className="lista">
         {productosIniciales.map((producto, index) => (
           <li className="lista-item" key={index}>
