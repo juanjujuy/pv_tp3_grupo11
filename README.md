@@ -1,3 +1,18 @@
+# Trabajo Práctico N°3
+
+## Integrantes del Grupo
+
+A continuación, los integrantes del grupo con sus respectivos nombres de usuario de GitHub:
+
+* Juan Eduardo Lamas - usuario de Github: juanjujuy (hizo la parte logica de lista tarea )
+* Pricila Acsama - usuario de Github: pricilaacsama (hizo la parte logica de lista producto)
+* Delia Maribel Cusipuma - usuario de Github: Delia150 (hizo la parte de estilos de lista producto)
+* Matias Gabriel Alfaro - usuario de Github: mati465 (hizo la parte de estilos de lista tarea)
+* Jonatan Rojas Romero - usuario de Github: Jonatan1Romero (no participo en este tp)
+
+Podrás ver el listado de productos en la interfaz y también se mostrará en la consola del navegador.
+Tambien se podra ver en la interfaz el listado de tareas, utilizando el hook `useState` de React para la gestión del estado.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
