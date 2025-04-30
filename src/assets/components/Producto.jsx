@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../../assets/css/producto.css";
 function Producto(){
     const productosIniciales = [
         { descripcion: "Auriculares Inalámbricos", precio: 49990.50 },
