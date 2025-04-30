@@ -59,56 +59,56 @@ function Producto(){
   }
 
   return (
-    <div>
-      <h2>Lista de Productos Inicial</h2>
-      <ul>
+    <div className="container">
+      <h2 clasName="titulo">Lista de Productos Inicial</h2>
+      <ul className="lista">
         {productosIniciales.map((producto, index) => (
-          <li key={index}>
+          <li className="lista-item" key={index}>
             Producto: {producto.descripcion} - Precio: ${producto.precio.toFixed(2)}
           </li>
         ))}
       </ul>
 
-      <h2>Productos con Precio Mayor a $20</h2>
-      <ul>
+      <h2 className="titulo">Productos con Precio Mayor a $20</h2>
+      <ul className="lista">
         {productosFiltrados.map((producto, index) => (
-          <li key={`mayor20-${index}`}>
+          <li className="lista-item" key={`mayor20-${index}`}>
             Producto: {producto.descripcion} - Precio: ${producto.precio.toFixed(2)}
           </li>
         ))}
       </ul>
 
-      <h2>Productos con IVA (21%) Incluido</h2>
-      <ul>
+      <h2 className="titulo">Productos con IVA (21%) Incluido</h2>
+      <ul className="lista">
         {productosConIVA.map((producto, index) => (
-          <li key={`conIVA-${index}`}>
+          <li className="lista-item" key={`conIVA-${index}`}>
             Producto: {producto.descripcion} - Precio con IVA: ${producto.precio}
           </li>
         ))}
       </ul>
 
-      <h2>Productos Ordenados por Precio (Menor a Mayor)</h2>
-      <ul>
+      <h2 className="titulo">Productos Ordenados por Precio (Menor a Mayor)</h2>
+      <ul className="lista">
         {productosOrdenados.map((producto, index) => (
-          <li key={`ordenado-${index}`}>
+          <li className="lista-item" key={`ordenado-${index}`}>
             Producto: {producto.descripcion} - Precio: ${producto.precio.toFixed(2)}
           </li>
         ))}
       </ul>
 
-      <h2>Productos con Nuevo Producto Agregado</h2>
-      <ul>
+      <h2 className="titulo">Productos con Nuevo Producto Agregado</h2>
+      <ul className="lista">
         {productosConNuevo.map((producto, index) => (
-          <li key={`conNuevo-${index}`}>
+          <li className="lista-item" key={`conNuevo-${index}`}>
             Producto: {producto.descripcion} - Precio: ${producto.precio.toFixed(2)}
           </li>
         ))}
       </ul>
 
-      <h2>Productos Después de Eliminar el de Menor Precio</h2>
-      <ul>
+      <h2 className="titulo">Productos Después de Eliminar el de Menor Precio</h2>
+      <ul className="lista">
         {productosParaEliminar.map((producto, index) => (
-          <li key={`sinMinimo-${index}`}>
+          <li className="lista-item" key={`sinMinimo-${index}`}>
             Producto: {producto.descripcion} - Precio: ${producto.precio.toFixed(2)}
           </li>
         ))}
