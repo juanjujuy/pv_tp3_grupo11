@@ -16,7 +16,7 @@ function Producto(){
     console.log(`Producto: ${p.descripcion} - Precio: $${p.precio}`);
   });
 
-  // 2 - Crear un nuevo array con productos con precio mayor a $20
+  // 2 - Crear un nuevo array con productos con precio mayor a $20000
   console.log("Ejercicio 2");
   const productosFiltrados = productosIniciales.filter(p => p.precio > 20000);
   console.log("2 - Productos con precio mayor a $20000:");
@@ -32,7 +32,7 @@ function Producto(){
   console.log("\n3 - Productos con IVA incluido:");
   console.log(productosConIVA);
 
-  // 4 - Ordenar el array original por precio de menor a mayor (creando una copia para no modificar el original para la visualización inicial)
+  // 4 - Ordenar el array original por precio de menor a mayor
   console.log("Ejercicio 4");
   const productosOrdenados = [...productosIniciales].sort((a, b) => a.precio - b.precio);
   console.log("\n4 - Array original ordenado por precio:");
@@ -60,7 +60,7 @@ function Producto(){
 
   return (
     <div className="container">
-      <h2 clasName="titulo">Lista de Productos Inicial</h2>
+      <h2 className="titulo">Lista de Productos Inicial</h2>
       <ul className="lista">
         {productosIniciales.map((producto, index) => (
           <li className="lista-item" key={index}>
@@ -69,7 +69,7 @@ function Producto(){
         ))}
       </ul>
 
-      <h2 className="titulo">Productos con Precio Mayor a $20</h2>
+      <h2 className="titulo">Productos con Precio Mayor a $20000</h2>
       <ul className="lista">
         {productosFiltrados.map((producto, index) => (
           <li className="lista-item" key={`mayor20-${index}`}>
