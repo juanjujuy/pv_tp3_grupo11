@@ -10,8 +10,14 @@ A continuación, los integrantes del grupo con sus respectivos nombres de usuari
 * Matias Gabriel Alfaro - usuario de Github: mati465 (hizo la parte de estilos de lista tarea)
 * Jonatan Rojas Romero - usuario de Github: Jonatan1Romero (no participo en este tp)
 
+Este proyecto consiste en la creación y gestión de datos utilizando React. Se implementan dos funcionalidades principales: la gestión de una lista de productos y la gestión de una lista de tareas.
+
+La sección de **Productos** permite la visualización de una lista de productos con sus descripciones y precios. Además, se realizan diversas operaciones sobre esta lista, como filtrado por precio, cálculo de IVA, ordenamiento, adición y eliminación de productos. La implementación de la lista de productos se realiza en el componente `Producto.jsx` sin el uso de hooks de React.
+
+La sección de **Tareas** (a ser implementada en el componente `Tarea.jsx`, tambien usando los componentes funcionales `TaskInput`, `TaskItem` y `TaskList`) permitirá la creación, visualización, edición y eliminación de tareas, utilizando el hook `useState` de React para la gestión del estado.
+
 Podrás ver el listado de productos en la interfaz y también se mostrará en la consola del navegador.
-Tambien se podra ver en la interfaz el listado de tareas, utilizando el hook `useState` de React para la gestión del estado.
+Tambien se podra ver en la interfaz el listado de tareas.
 
 # React + Vite
 
