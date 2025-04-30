@@ -1,6 +1,8 @@
 import { useState } from "react";
 import TaskItem from "./TaskItem";
 
+import '../css/TaskInput.css';
+
 function TaskInput (props) {
 
 const [lista,setLista] = props.tareas;
@@ -18,7 +20,7 @@ const agregarTarea = (event) => {
 }
 
     return(
-        <div>
+        <div className="task-input-container">
             <h3>Nueva Tarea</h3>
             <form onSubmit={agregarTarea}>
             <label>Ingrese la nueva Tarea</label>
