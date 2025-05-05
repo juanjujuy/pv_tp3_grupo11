@@ -1,122 +1,115 @@
-import React from "react";
-import "../../assets/css/producto.css";
-function Producto(){
-    const productosIniciales = [
-        { descripcion: "Auriculares Inalámbricos", precio: 49990.50 },
-        { descripcion: "Mouse Óptico", precio: 15500 },
-        { descripcion: "Monitor 24 Pulgadas", precio: 120000.99 },
-        { descripcion: "Webcam HD", precio: 24800.75 },
-        { descripcion: "Impresora Multifunción", precio: 85000 },
-        { descripcion: "Cable HDMI", precio: 10900 }
-    ];
+import React, { useState } from 'react';
+import '../css/producto.css';
 
-     // 1 - Mostrar en consola cada producto
-  console.log("Ejercicio 1 - Mostrar productos con forEach:");
-  productosIniciales.forEach(p => {
-    console.log(`Producto: ${p.descripcion} - Precio: $${p.precio}`);
-  });
+function Producto() {
+ 
+  const [productos, setProductos] = useState([ 
+    { descripcion: "Auriculares Inalámbricos", precio: 49990.5 },
+    { descripcion: "Mouse Óptico", precio: 15500 },
+    { descripcion: "Monitor 24 Pulgadas", precio: 120000.99 },
+    { descripcion: "Webcam HD", precio: 24800.75 },
+    { descripcion: "Impresora Multifunción", precio: 85000 },
+    { descripcion: "Cable HDMI", precio: 10900 },]);
+  const [productosOriginales, setProductosOriginales] = useState([]);
+  const [descripcion, setDescripcion] = useState('');
+  const [precio, setPrecio] = useState('');
+  const [ivaAgregado, setIvaAgregado] = useState(false);
 
-  // 2 - Crear un nuevo array con productos con precio mayor a $20000
-  console.log("Ejercicio 2");
-  const productosFiltrados = productosIniciales.filter(p => p.precio > 20000);
-  console.log("2 - Productos con precio mayor a $20000:");
-  console.log(productosFiltrados);
+  const agregarProducto = () => {
+    if (descripcion && precio) {
+      const nuevoProducto = { descripcion, precio: parseFloat(precio) };
+      const nuevosProductos = [...productos, nuevoProducto];
+      setProductos(nuevosProductos);
+      setProductosOriginales(nuevosProductos); // Actualiza originales
+      setDescripcion('');
+      setPrecio('');
+      setIvaAgregado(false); // Reiniciar IVA si se agrega producto nuevo
+    } else {
+      alert("Completa la descripción y el precio");
+    }
+  };
 
-  
-  // 3 - Crear un array con precios con IVA incluido (21%)
-  console.log("Ejercicio 3");
-  const productosConIVA = productosIniciales.map(p => ({
-    descripcion: p.descripcion,
-    precio: (p.precio * 1.21).toFixed(2)
-    }));
-  console.log("\n3 - Productos con IVA incluido:");
-  console.log(productosConIVA);
+  const mostrarProductos = () => {
+    productos.forEach(p => {
+      console.log(`Producto: ${p.descripcion} - Precio: $${p.precio}`);
+    });
+  };
 
-  // 4 - Ordenar el array original por precio de menor a mayor
-  console.log("Ejercicio 4");
-  const productosOrdenados = [...productosIniciales].sort((a, b) => a.precio - b.precio);
-  console.log("\n4 - Array original ordenado por precio:");
-  console.log(productosOrdenados);
+  const ordenarProductos = () => {
+    const ordenados = [...productos].sort((a, b) => a.precio - b.precio);
+    setProductos(ordenados);
+    setProductosOriginales(ordenados);
+  };
 
-   // 5 - Agregar un nuevo producto
-   console.log("Ejercicio 5");
-    const nuevoProducto = { descripcion: "Parlante Bluetooth", precio: 59000.90 };
-    const productosConNuevo = [...productosIniciales, nuevoProducto];
-  console.log("\n5 - Array con nuevo producto agregado:");
-  console.log(productosConNuevo);
+  const eliminarMasBarato = () => {
+    if (productos.length === 0) return;
+    const menorPrecio = Math.min(...productos.map(p => p.precio));
+    const filtrados = productos.filter(p => p.precio !== menorPrecio);
+    setProductos(filtrados);
+    setProductosOriginales(filtrados);
+  };
 
-  // 6 - Eliminar el producto con el precio más bajo
-  console.log("Ejercicio 6");
-  let productosParaEliminar = [...productosIniciales];
-  if (productosParaEliminar.length > 0) {
-    productosParaEliminar.sort((a, b) => a.precio - b.precio);
-    const precioMinimo = productosParaEliminar[0].precio;
-    productosParaEliminar = productosParaEliminar.filter(p => p.precio > precioMinimo);
-    console.log("\n6 - Array después de eliminar el producto con el precio más bajo:");
-    console.log(productosParaEliminar);
-  } else {
-    console.log("\n6 - El array de productos está vacío.");
-  }
+  const filtrarProductos = () => {
+    const filtrados = productos.filter(p => p.precio > 20000);
+    setProductos(filtrados);
+    setProductosOriginales(filtrados);
+  };
+
+  const agregarIVA = () => {
+    if (!ivaAgregado) {
+      const conIVA = productos.map(p => ({
+        ...p,
+        precio: parseFloat((p.precio * 1.21).toFixed(2))
+      }));
+      setProductos(conIVA);
+      setIvaAgregado(true);
+    } else {
+      // Restauracion a precios originales
+      setProductos(productosOriginales);
+      setIvaAgregado(false);
+    }
+  };
 
   return (
-    <div className="container">
-      <h2 className="titulo">Lista de Productos Inicial</h2>
-      <ul className="lista">
-        {productosIniciales.map((producto, index) => (
-          <li className="lista-item" key={index}>
-            Producto: {producto.descripcion} - Precio: ${producto.precio.toFixed(2)}
-          </li>
-        ))}
-      </ul>
+    <div className="producto-wrapper">
+      <h2 className="producto-titulo">Gestión de Productos</h2>
 
-      <h2 className="titulo">Productos con Precio Mayor a $20000</h2>
-      <ul className="lista">
-        {productosFiltrados.map((producto, index) => (
-          <li className="lista-item" key={`mayor20-${index}`}>
-            Producto: {producto.descripcion} - Precio: ${producto.precio.toFixed(2)}
-          </li>
-        ))}
-      </ul>
+      <div className="producto-formulario">
+        <input
+          type="text"
+          placeholder="Descripción"
+          value={descripcion}
+          onChange={(e) => setDescripcion(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Precio"
+          value={precio}
+          onChange={(e) => setPrecio(e.target.value)}
+        />
+        <button onClick={agregarProducto}>Agregar</button>
+      </div>
 
-      <h2 className="titulo">Productos con IVA (21%) Incluido</h2>
-      <ul className="lista">
-        {productosConIVA.map((producto, index) => (
-          <li className="lista-item" key={`conIVA-${index}`}>
-            Producto: {producto.descripcion} - Precio con IVA: ${producto.precio}
-          </li>
-        ))}
-      </ul>
+      <div className="producto-botones">
+        <button onClick={filtrarProductos}>Filtrar > $20000</button>
+        <button onClick={agregarIVA}>
+          {ivaAgregado ? 'Quitar IVA' : 'Agregar IVA'}
+        </button>
+        <button onClick={ordenarProductos}>Ordenar</button>
+        <button onClick={eliminarMasBarato}>Eliminar Menor Precio</button>
+      </div>
 
-      <h2 className="titulo">Productos Ordenados por Precio (Menor a Mayor)</h2>
-      <ul className="lista">
-        {productosOrdenados.map((producto, index) => (
-          <li className="lista-item" key={`ordenado-${index}`}>
-            Producto: {producto.descripcion} - Precio: ${producto.precio.toFixed(2)}
-          </li>
-        ))}
-      </ul>
-
-      <h2 className="titulo">Productos con Nuevo Producto Agregado</h2>
-      <ul className="lista">
-        {productosConNuevo.map((producto, index) => (
-          <li className="lista-item" key={`conNuevo-${index}`}>
-            Producto: {producto.descripcion} - Precio: ${producto.precio.toFixed(2)}
-          </li>
-        ))}
-      </ul>
-
-      <h2 className="titulo">Productos Después de Eliminar el de Menor Precio</h2>
-      <ul className="lista">
-        {productosParaEliminar.map((producto, index) => (
-          <li className="lista-item" key={`sinMinimo-${index}`}>
-            Producto: {producto.descripcion} - Precio: ${producto.precio.toFixed(2)}
+      <ul className="producto-lista">
+        {productos.map((p, index) => (
+          <li key={index} className="producto-item">
+            <span>{p.descripcion}</span>
+            <span>${p.precio}</span>
           </li>
         ))}
       </ul>
     </div>
   );
-
-
 }
 
 export default Producto;
+
