@@ -13,9 +13,8 @@ function TaskList (props) {
             <h3>Lista de Tareas</h3>
             <ul>
                 {lista.map((elemento,index)=> (<li key={index}>
-                    <TaskItem tarea = {elemento}></TaskItem>
-                    <button>Realizada</button>
-                    <button>Eliminar</button>
+                    <TaskItem tarea = {elemento} listaTareas={[lista,setLista]}></TaskItem>
+
                     </li>))}
             </ul>
 
