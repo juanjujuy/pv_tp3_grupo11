@@ -6,11 +6,14 @@ import TaskInput from "./TaskInput";
 import '../css/TaskInput.css';
 
 function Tareas () {
+    const [descripcion, setDescripcion] = useState('');
+    const [estado, setEstado] = useState('');
 
-    const [lista,setLista] = useState(["Crear Repositorio en GitHub",
-        "Agregar Colaboradores",
-        "Crear Rama de Trabajo",
-        "Hacer Commits con Avanzes"]);
+    const [lista,setLista] = useState([
+        {id:1,descripcion: "Crear Repositorio en GitHub",alumno:"Juan", estado: "pendiente"},
+        {id:2,descripcion: "Agregar Colaboradores", alumno:"Matias", estado: "pendiente"},
+        {id:3,descripcion: "Crear Rama de Trabajo", alumno:"Mari", estado: "pendiente"},
+        {id:4,descripcion: "Hacer Commits con Avanzes", alumno: "Pricila", estado: "pendiente"}]);
     
     return(
         <div className="task-input-container">
