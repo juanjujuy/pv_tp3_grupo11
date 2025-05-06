@@ -17,8 +17,8 @@ function Tareas () {
     
     return(
         <div className="task-input-container">
-            <TaskList tareas = {[lista,setLista]}></TaskList>
             <TaskInput tareas={[lista,setLista]}></TaskInput>
+            <TaskList tareas = {[lista,setLista]}></TaskList>
         </div>
     );
 }
