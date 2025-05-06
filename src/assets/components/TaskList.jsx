@@ -12,7 +12,7 @@ function TaskList (props) {
         <div className="task-input-container">
             <h3>Lista de Tareas</h3>
             <ul>
-                {lista.map((elemento,index)=> (<li key={index}>
+                {lista.map((elemento)=> (<li key={elemento.id}>
                     <TaskItem tarea = {elemento} listaTareas={[lista,setLista]}></TaskItem>
 
                     </li>))}

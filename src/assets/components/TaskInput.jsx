@@ -8,7 +8,6 @@ const [lista,setLista] = props.tareas;
 const [nuevo,setNuevo] = useState ("");
 const [alumno,setAlumno] = useState("");
 
-let contador=lista.length-1;
 
 const guardarAlumno = (event) => {
     setAlumno(event.target.value);
@@ -19,9 +18,9 @@ const guardarNombre = (event) => {
 }
 
 const crearTarea = (descripcionTarea, alumno) => {
-    contador++;
+    let contador=lista.length > 0 ? Math.max(...lista.map(t => t.id)) : 0;
     return {
-        id: contador,
+        id: contador + 1,
         descripcion: descripcionTarea,
         alumno: alumno,
         estado: "pendiente"};
@@ -29,13 +28,14 @@ const crearTarea = (descripcionTarea, alumno) => {
 
 const agregarTarea = (event) => {
     event.preventDefault();
+    if(nuevo.trim() !== "" || alumno.trim() !== ""){
     const nuevaTarea = crearTarea(nuevo,alumno);
     setLista([...lista, nuevaTarea]);
     console.log(nuevaTarea.descripcion);
     setAlumno("");
     setNuevo("");
     console.log(nuevaTarea);
-
+    }
 }
 
     return(
@@ -43,9 +43,9 @@ const agregarTarea = (event) => {
             <h2>Nueva Tarea</h2>
             <form onSubmit={agregarTarea}>
             <label>Ingrese la nueva Tarea</label>
-            <input type="text" value={nuevo} onChange={guardarNombre}/>
+            <input type="text" placeholder="ingrese tarea" value={nuevo} onChange={guardarNombre}/>
             <label>Alumno Designado a la Tarea</label>
-            <input type="text" value={alumno} onChange={guardarAlumno} />
+            <input type="text" placeholder="ingrese nombre" value={alumno} onChange={guardarAlumno} />
             <button type="submit">Agregar</button>
             </form>
         </div>

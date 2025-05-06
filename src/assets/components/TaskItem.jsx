@@ -11,7 +11,7 @@ function TaskItem (props) {
     const eliminar = () => {
         console.log(elemento.id)
         const listaEliminada = lista.filter(t => t.id !== elemento.id);
-        console.log(listaEliminada)
+        console.log(listaEliminada);
         setLista(listaEliminada);
         console.log("Tarea Eliminada")
     }
