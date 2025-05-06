@@ -9,12 +9,12 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div className="contenedor-principal">
       <h1>Programacion Visual - TP3</h1>
       <Producto></Producto>
       <Tareas></Tareas>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App

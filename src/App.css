@@ -4,6 +4,14 @@
   padding: 2rem;
   text-align: center;
 }
+.contenedor-principal{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap; /*si es que se achica la pantalla*/
+}
 
 .logo {
   height: 6em;
